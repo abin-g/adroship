@@ -25,7 +25,6 @@ const AppHeader: React.FC = () => {
         setApplicationMenuOpen(!isApplicationMenuOpen);
     };
 
-    // Close user menu when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -39,7 +38,7 @@ const AppHeader: React.FC = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // CMD/CTRL + K focus search
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if ((event.metaKey || event.ctrlKey) && event.key === "k") {
@@ -56,9 +55,7 @@ const AppHeader: React.FC = () => {
     return (
         <header className="sticky top-0 flex w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
             <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
-                {/* Left section */}
                 <div className="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4">
-                    {/* Sidebar toggle */}
                     <button
                         className="cursor-pointer items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 dark:border-gray-800 lg:flex dark:text-gray-400 lg:h-11 lg:w-11 lg:border"
                         onClick={handleToggle}
@@ -69,7 +66,6 @@ const AppHeader: React.FC = () => {
 
                     <div className="lg:hidden">A</div>
 
-                    {/* Application menu button */}
                     <button
                         onClick={toggleApplicationMenu}
                         className="flex cursor-pointer items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
@@ -89,8 +85,6 @@ const AppHeader: React.FC = () => {
                             />
                         </svg>
                     </button>
-
-                    {/* Search bar */}
                     <div className="hidden lg:block">
                         <form>
                             <div className="relative">
@@ -112,12 +106,10 @@ const AppHeader: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Right section */}
                 <div
                     className={`${isApplicationMenuOpen ? "flex" : "hidden"
                         } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
                 >
-                    {/* Wallet */}
                     <div className="flex items-center w-40 h-12 bg-white px-3">
                         <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100">
                             <CiWallet size={20} className="text-gray-600" />
@@ -130,7 +122,6 @@ const AppHeader: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* User menu */}
                     <div className="relative" ref={userMenuRef}>
                         <button
                             onClick={() => setUserMenuOpen(!isUserMenuOpen)}

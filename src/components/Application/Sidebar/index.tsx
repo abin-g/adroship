@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "@/context/SidebarContext";
 
 import { MdOutlineDashboard, MdOutlinePayment } from "react-icons/md";
-import { LuUsers } from "react-icons/lu";
 import { FaClipboardList, FaChartBar } from "react-icons/fa";
-import { RiCustomerService2Line } from "react-icons/ri";
+import { RiCustomerService2Line, RiSettings5Line } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaChevronDown, FaAngleUp } from "react-icons/fa6";
 import { Tooltip } from "react-tooltip";
+import { LuWarehouse, LuUsers } from "react-icons/lu";
+import { SlCalculator } from "react-icons/sl";
+
 
 type NavItem = {
     name: string;
@@ -25,63 +27,84 @@ const navItems: NavItem[] = [
     {
         icon: <MdOutlineDashboard size={20} />,
         name: "Dashboard",
-        path: "/dashboard"
+        path: "/app"
     },
     {
         icon: <LuUsers size={20} />,
         name: "Users",
         subItems: [
-            { name: "All Users", path: "/users" },
-            { name: "Add New", path: "/users/add" },
-            { name: "Roles & Permissions", path: "/users/roles" }
+            { name: "All Users", path: "/app/users" },
+            { name: "Add New", path: "/app/users/add" },
+            { name: "Roles & Permissions", path: "/app/users/roles" },
+            { name: "Customers", path: "/app/customers" },
         ]
     },
     {
         icon: <FaClipboardList size={20} />,
         name: "Orders",
         subItems: [
-            { name: "All Orders", path: "/orders" },
-            { name: "Create Order", path: "/orders/new" },
-            { name: "Rate Calculator", path: "/rate-calculator" }
+            { name: "All Orders", path: "/app/orders" },
+            { name: "Create Order", path: "/app/orders/new" }
         ]
     },
     {
         icon: <TbTruckDelivery size={20} />,
-        name: "Tracking",
+        name: "NDR",
         subItems: [
-            { name: "Track Delivery", path: "/track-delivery" },
-            { name: "Live Tracking Map", path: "/tracking/live" }
+            { name: "NDR List", path: "/app/ndr" },
+            { name: "Manage NDR", path: "/app/ndr/manage" }
         ]
     },
     {
         icon: <MdOutlinePayment size={20} />,
-        name: "Payments",
+        name: "Billing",
         subItems: [
-            { name: "All Transactions", path: "/payments" },
-            { name: "Wallet Management", path: "/wallet" },
-            { name: "Refund Requests", path: "/payments/refunds" }
+            { name: "All Transactions", path: "/app/billing" },
+            { name: "Invoices", path: "/app/billing/invoices" }
+        ]
+    },
+    {
+        icon: <SlCalculator size={20} />,
+        name: "Tools",
+        subItems: [
+            { name: "Rate Calculator", path: "/app/tools/rate-calculator" },
+            { name: "Other Tools", path: "/app/tools/other" }
         ]
     },
     {
         icon: <FaChartBar size={20} />,
         name: "Reports",
         subItems: [
-            { name: "Sales Reports", path: "/reports/sales" },
-            { name: "Customer Insights", path: "/reports/customers" },
-            { name: "Logistics Performance", path: "/reports/logistics" }
+            { name: "Sales Reports", path: "/app/reports/sales" },
+            { name: "Customer Insights", path: "/app/reports/customers" },
+            { name: "Logistics Performance", path: "/app/reports/logistics" }
+        ]
+    },
+    {
+        icon: <RiSettings5Line size={20} />,
+        name: "Settings",
+        subItems: [
+            { name: "User Settings", path: "/app/settings/users" },
+            { name: "App Settings", path: "/app/settings/app" }
+        ]
+    },
+    {
+        icon: <LuWarehouse size={20} />,
+        name: "Warehouse",
+        subItems: [
+            { name: "Inventory", path: "/app/warehouse/inventory" },
+            { name: "Stock Management", path: "/app/warehouse/stock" }
         ]
     },
     {
         icon: <RiCustomerService2Line size={20} />,
-        name: "Support",
+        name: "Integrations",
         subItems: [
-            { name: "Customer Support", path: "/customer-support" },
-            { name: "Query Management", path: "/queries" }
+            { name: "API Keys", path: "/app/integrations/api" },
+            { name: "Third-party Apps", path: "/app/integrations/apps" }
         ]
     }
 ];
-
-
 
 const AppSidebar: React.FC = () => {
     const { isExpanded, isMobileOpen } = useSidebar();
