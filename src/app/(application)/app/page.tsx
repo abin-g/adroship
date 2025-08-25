@@ -14,15 +14,15 @@ const AdroShipDashboardPage = () => {
         <div className="p-6 bg-gray-50 min-h-screen">
 
             <div className="flex items-center justify-between mb-6">
-                <div className="flex bg-gray-100 rounded-full p-1">
+                <div className="flex bg-gray-100 rounded-md p-1">
                     <button
                         onClick={() => setActiveTab("analytics")}
-                        className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-full transition ${activeTab === "analytics" ? "bg-black text-white shadow" : "text-gray-600 hover:text-gray-800"}`}>
+                        className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-md transition ${activeTab === "analytics" ? "bg-black text-white shadow" : "text-gray-600 hover:text-gray-800"}`}>
                         Analytics
                     </button>
                     <button
                         onClick={() => setActiveTab("orders")}
-                        className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-full transition ${activeTab === "orders" ? "bg-black text-white shadow" : "text-gray-600 hover:text-gray-800"}`}>
+                        className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-md transition ${activeTab === "orders" ? "bg-black text-white shadow" : "text-gray-600 hover:text-gray-800"}`}>
                         Order Status
                     </button>
                 </div>

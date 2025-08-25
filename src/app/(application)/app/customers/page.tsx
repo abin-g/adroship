@@ -1,11 +1,12 @@
 "use client";
 
-import { HiPencilAlt, HiTrash, HiUser, HiCheckCircle, HiDownload, HiSearch } from "react-icons/hi";
-import { MdAlternateEmail, MdSecurity, MdLocalShipping } from "react-icons/md";
+import { HiUser, HiCheckCircle, HiDownload, HiSearch } from "react-icons/hi";
+import { MdSecurity, MdBlockFlipped } from "react-icons/md";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { RiUserSharedFill } from "react-icons/ri";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { BsSortUp } from "react-icons/bs";
+import { PiUsersThreeBold } from "react-icons/pi";
 
 const users = [
     {
@@ -15,7 +16,7 @@ const users = [
         role: "Project Manager",
         status: "Active",
         joined: "24 Jun 2024, 9:23 pm",
-        auth: true,
+        kyc: true,
         avatar: "https://i.pravatar.cc/40?img=1",
     },
     {
@@ -25,7 +26,7 @@ const users = [
         role: "UX Designer",
         status: "Active",
         joined: "15 Mar 2023, 2:45 pm",
-        auth: true,
+        kyc: true,
         avatar: "https://i.pravatar.cc/40?img=2",
     },
     {
@@ -35,47 +36,35 @@ const users = [
         role: "Front-End Developer",
         status: "Inactive",
         joined: "10 Apr 2022, 11:30 am",
-        auth: false,
+        kyc: false,
         avatar: "https://i.pravatar.cc/40?img=3",
     },
 ];
 
-export default function Users() {
+export default function Customers() {
     return (
         <div className="p-6 min-h-screen">
-
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
                         <span className="p-2 rounded-full bg-green-500/10 text-green-600">
-                            <HiUser size={28} />
+                            <PiUsersThreeBold size={28} />
                         </span>
-                        Users
+                        Customers
                     </h1>
                     <p className="mt-2 text-gray-600 text-sm">
-                        Manage and monitor all user accounts, their roles, and authentication status.
+                        Manage and monitor all customer accounts, their roles, and KYC verification status.
                     </p>
                     <div className="w-20 h-1 mt-3 rounded-full bg-gradient-to-r from-green-500 to-gray-700"></div>
                 </div>
-
-                <button className="px-4 py-2 bg-green-500 text-white font-medium rounded-lg shadow hover:bg-green-600 transition">
-                    + Add User
-                </button>
             </div>
 
-
             <div className="overflow-x-auto bg-white">
-
                 <div className="flex items-center justify-between px-4 py-3 bg-white ">
                     <div className="flex items-center gap-3">
                         <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-green-500 text-white hover:bg-green-600 shadow-sm transition">
                             <HiDownload size={16} /> Download
                         </button>
-
-                        <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400 text-gray-700 hover:bg-gray-100 transition">
-                            <MdLocalShipping size={16} /> Track
-                        </button>
-
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -105,13 +94,13 @@ export default function Users() {
                             </svg>
                         </div>
 
-
                         <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 text-gray-600">
                             <BsSortUp size={16} />
                         </button>
                     </div>
                 </div>
 
+                {/* Table */}
                 <table className="w-full text-sm text-left text-gray-700 bg-white ">
                     <thead className="bg-gray-50 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>
@@ -145,12 +134,12 @@ export default function Users() {
 
                             <th className="px-6 py-3 font-semibold whitespace-nowrap">
                                 <div className="flex items-center gap-2">
-                                    <MdSecurity className="text-green-600" /> 2F Auth
+                                    <MdSecurity className="text-green-600" /> KYC Verified
                                 </div>
                             </th>
 
                             <th className="px-6 py-3 font-semibold text-left whitespace-nowrap">
-                                Actions
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -186,7 +175,6 @@ export default function Users() {
                                     </div>
                                 </td>
 
-
                                 <td className="px-6 py-4">{user.role}</td>
 
                                 <td className="px-6 py-4">
@@ -203,21 +191,18 @@ export default function Users() {
 
                                 <td className="px-6 py-4">
                                     <span
-                                        className={`px-2 py-1 text-xs font-medium rounded-md ${user.auth
+                                        className={`px-2 py-1 text-xs font-medium rounded-md ${user.kyc
                                             ? "bg-green-100 text-green-700 border border-green-200"
                                             : "bg-gray-200 text-gray-500 border border-gray-300"
                                             }`}
                                     >
-                                        {user.auth ? "Enabled" : "Disabled"}
+                                        {user.kyc ? "Verified" : "Pending"}
                                     </span>
                                 </td>
 
-                                <td className="px-6 py-4 flex justify-end space-x-2">
-                                    <button className="cursor-pointer flex items-center gap-1 px-3 py-1.5 text-sm border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition">
-                                        <HiPencilAlt size={16} /> Edit
-                                    </button>
+                                <td className="px-6 py-4 flex justify-end">
                                     <button className="cursor-pointer flex items-center gap-1 px-3 py-1.5 text-sm border border-red-300 rounded-md text-red-600 hover:bg-red-50 transition">
-                                        <HiTrash size={16} /> Delete
+                                        <MdBlockFlipped size={16} /> Disable User
                                     </button>
                                 </td>
                             </tr>
@@ -245,7 +230,6 @@ export default function Users() {
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     );

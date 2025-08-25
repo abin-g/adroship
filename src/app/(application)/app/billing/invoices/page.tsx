@@ -7,114 +7,89 @@ import {
     CheckboxField,
     PhoneField,
 } from "@/components/Forms/FormFields";
-import { RiUserShared2Line } from "react-icons/ri";
+import { FaFileInvoice } from "react-icons/fa";
 
-interface UserFormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    role: string;
+interface InvoiceFormData {
+    invoiceNumber: string;
+    customerName: string;
+    customerEmail: string;
+    customerPhone: string;
     department: string;
-    password: string;
-    confirmPassword: string;
-    twoFA: boolean;
+    amount: number;
+    dueDate: string;
+    status: string;
+    gstApplicable: boolean;
 }
 
-const AddUser = () => {
+const InvoicePage = () => {
     const {
         register,
         handleSubmit,
         control,
         formState: { errors },
-        watch,
-    } = useForm<UserFormData>();
+    } = useForm<InvoiceFormData>();
 
-    const onSubmit = (data: UserFormData) => {
-        console.log("User Data:", data);
+    const onSubmit = (data: InvoiceFormData) => {
+        console.log("Invoice Data:", data);
     };
-
-    const password = watch("password");
-
-    console.log("errors", errors)
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-
+            {/* Header */}
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
                         <span className="p-2 rounded-full bg-green-500/10 text-green-600">
-                            <RiUserShared2Line size={28} />
+                            <FaFileInvoice size={28} />
                         </span>
-                        Add Users
+                        Create Invoice
                     </h1>
                     <p className="mt-2 text-gray-600 text-sm">
-                        Manage and monitor all user accounts, their roles, and authentication status.
+                        Generate and manage invoices for customers with payment details.
                     </p>
                     <div className="w-20 h-1 mt-3 rounded-full bg-gradient-to-r from-green-500 to-gray-700"></div>
                 </div>
 
                 <button className="px-4 py-2 bg-green-500 text-white font-medium rounded-lg shadow hover:bg-green-600 transition">
-                    Manage User
+                    Manage Invoices
                 </button>
             </div>
 
-
+            {/* Form */}
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="bg-white p-6 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
             >
                 <TextField
-                    label="First Name"
+                    label="Invoice Number"
                     required
-                    error={errors.firstName?.message as string}
-                    {...register("firstName", { required: "First Name is required" })}
+                    error={errors.invoiceNumber?.message}
+                    {...register("invoiceNumber", { required: "Invoice number is required" })}
                 />
 
                 <TextField
-                    label="Last Name"
+                    label="Customer Name"
                     required
-                    error={errors.lastName?.message}
-                    {...register("lastName", { required: "Last Name is required" })}
-                />
-
-                <Controller
-                    name="role"
-                    control={control}
-                    rules={{ required: "Role is required" }}
-                    render={({ field }: { field: any }) => (
-                        <SelectField
-                            label="Role"
-                            required
-                            error={errors.role?.message}
-                            options={[
-                                { value: "admin", label: "Admin" },
-                                { value: "manager", label: "Manager" },
-                                { value: "user", label: "User" },
-                            ]}
-                            {...field}
-                            onChange={(val: { value: string }) => field.onChange(val.value)}
-                        />
-                    )}
+                    error={errors.customerName?.message}
+                    {...register("customerName", { required: "Customer name is required" })}
                 />
 
                 <TextField
-                    label="Email"
+                    label="Customer Email"
                     type="email"
                     required
-                    error={errors.email?.message}
-                    {...register("email", {
+                    error={errors.customerEmail?.message}
+                    {...register("customerEmail", {
                         required: "Email is required",
                         pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
                     })}
                 />
 
                 <PhoneField
-                    label="Contact Number"
+                    label="Customer Phone"
                     required
-                    error={errors.phone?.message}
-                    {...register("phone", {
+                    error={errors.customerPhone?.message}
+                    {...register("customerPhone", {
                         required: "Phone number is required",
                         pattern: {
                             value: /^[0-9]{10}$/,
@@ -127,7 +102,7 @@ const AddUser = () => {
                     name="department"
                     control={control}
                     rules={{ required: "Department is required" }}
-                    render={({ field }: { field: any }) => (
+                    render={({ field }) => (
                         <SelectField
                             label="Department"
                             required
@@ -136,8 +111,6 @@ const AddUser = () => {
                                 { value: "sales", label: "Sales" },
                                 { value: "operations", label: "Operations" },
                                 { value: "logistics", label: "Logistics" },
-                                { value: "warehouse", label: "Warehouse" },
-                                { value: "customer-support", label: "Customer Support" },
                                 { value: "accounts", label: "Accounts" },
                             ]}
                             {...field}
@@ -146,35 +119,49 @@ const AddUser = () => {
                     )}
                 />
 
-
                 <TextField
-                    label="Password"
-                    type="password"
+                    label="Invoice Amount (₹)"
+                    type="number"
                     required
-                    error={errors.password?.message}
-                    {...register("password", {
-                        required: "Password is required",
-                        minLength: { value: 6, message: "Password must be at least 6 characters" },
+                    error={errors.amount?.message}
+                    {...register("amount", {
+                        required: "Invoice amount is required",
+                        min: { value: 1, message: "Amount must be greater than 0" },
                     })}
                 />
 
                 <TextField
-                    label="Confirm Password"
-                    type="password"
+                    label="Due Date"
+                    type="date"
                     required
-                    error={errors.confirmPassword?.message}
-                    {...register("confirmPassword", {
-                        required: "Confirm Password is required",
-                        validate: (val: any) =>
-                            val === password || "Passwords do not match",
-                    })}
+                    error={errors.dueDate?.message}
+                    {...register("dueDate", { required: "Due date is required" })}
+                />
+
+                <Controller
+                    name="status"
+                    control={control}
+                    rules={{ required: "Status is required" }}
+                    render={({ field }) => (
+                        <SelectField
+                            label="Status"
+                            required
+                            error={errors.status?.message}
+                            options={[
+                                { value: "pending", label: "Pending" },
+                                { value: "paid", label: "Paid" },
+                                { value: "overdue", label: "Overdue" },
+                            ]}
+                            {...field}
+                            onChange={(newValue: { value: string }) => field.onChange(newValue.value)}
+                        />
+                    )}
                 />
 
                 <div className="col-span-2">
                     <CheckboxField
-                        label="Enable Two-Factor Authentication (2FA)"
-                        error={errors.twoFA?.message}
-                        {...register("twoFA")}
+                        label="GST Applicable"
+                        {...register("gstApplicable")}
                     />
                 </div>
 
@@ -183,7 +170,7 @@ const AddUser = () => {
                         type="submit"
                         className="px-6 py-2 bg-green-600 text-white font-medium rounded-lg shadow hover:bg-green-700 transition"
                     >
-                        Add User
+                        Create Invoice
                     </button>
                 </div>
             </form>
@@ -191,4 +178,4 @@ const AddUser = () => {
     );
 };
 
-export default AddUser;
+export default InvoicePage;

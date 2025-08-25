@@ -35,7 +35,6 @@ const navItems: NavItem[] = [
         subItems: [
             { name: "All Users", path: "/app/users" },
             { name: "Add New", path: "/app/users/add" },
-            { name: "Roles & Permissions", path: "/app/users/roles" },
             { name: "Customers", path: "/app/customers" },
         ]
     },
@@ -71,6 +70,23 @@ const navItems: NavItem[] = [
             { name: "Other Tools", path: "/app/tools/other" }
         ]
     },
+   
+    {
+        icon: <LuWarehouse size={20} />,
+        name: "Warehouse",
+        subItems: [
+            { name: "Inventory", path: "/app/warehouse/inventory" },
+            { name: "Stock Management", path: "/app/warehouse/stock" }
+        ]
+    },
+    {
+        icon: <RiCustomerService2Line size={20} />,
+        name: "Integrations",
+        subItems: [
+            { name: "API Keys", path: "/app/integrations/api" },
+            { name: "Third-party Apps", path: "/app/integrations/apps" }
+        ]
+    },
     {
         icon: <FaChartBar size={20} />,
         name: "Reports",
@@ -86,22 +102,6 @@ const navItems: NavItem[] = [
         subItems: [
             { name: "User Settings", path: "/app/settings/users" },
             { name: "App Settings", path: "/app/settings/app" }
-        ]
-    },
-    {
-        icon: <LuWarehouse size={20} />,
-        name: "Warehouse",
-        subItems: [
-            { name: "Inventory", path: "/app/warehouse/inventory" },
-            { name: "Stock Management", path: "/app/warehouse/stock" }
-        ]
-    },
-    {
-        icon: <RiCustomerService2Line size={20} />,
-        name: "Integrations",
-        subItems: [
-            { name: "API Keys", path: "/app/integrations/api" },
-            { name: "Third-party Apps", path: "/app/integrations/apps" }
         ]
     }
 ];
