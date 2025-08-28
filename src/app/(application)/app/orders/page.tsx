@@ -37,7 +37,7 @@ const orders = [
 
 export default function Orders() {
     return (
-        <div className="p-6 min-h-screen">
+        <div className="p-6 bg-gray-50 min-h-screen">
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
@@ -53,49 +53,49 @@ export default function Orders() {
                 </div>
             </div>
 
-            <div className="overflow-x-auto bg-white rounded-lg shadow">
-
-                <div className="flex items-center justify-between px-4 py-3 bg-white">
-                    <div className="flex items-center gap-3">
-                        <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-green-500 text-white hover:bg-green-600 shadow-sm transition">
-                            <HiDownload size={16} /> Download
-                        </button>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                        <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Search orders..."
-                                className="pl-8 pr-3 py-2 text-sm border border-gray-400 rounded-md outline-none text-gray-700"
-                            />
-                            <HiSearch className="absolute left-2 top-2.5 text-gray-400" size={16} />
-                        </div>
-                        <div className="relative">
-                            <select className="appearance-none px-3 pr-8 py-2 text-sm border border-gray-400 rounded-md outline-none text-gray-700 bg-white cursor-pointer">
-                                <option value="">Sort by</option>
-                                <option value="date">Order Date</option>
-                                <option value="status">Order Status</option>
-                                <option value="payment">Payment</option>
-                            </select>
-                            <svg
-                                className="w-4 h-4 text-gray-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </div>
-
-                        <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 text-gray-600">
-                            <BsSortUp size={16} />
-                        </button>
-                    </div>
+            <div className="flex items-center justify-between px-4 py-3">
+                <div className="flex items-center gap-3">
+                    <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-green-500 text-white hover:bg-green-600 shadow-sm transition">
+                        <HiDownload size={16} /> Download
+                    </button>
                 </div>
 
+                <div className="flex items-center gap-3">
+                    <div className="relative">
+                        <input
+                            type="text"
+                            placeholder="Search orders..."
+                            className="pl-8 pr-3 py-2 text-sm border border-gray-400 rounded-md outline-none text-gray-700"
+                        />
+                        <HiSearch className="absolute left-2 top-2.5 text-gray-400" size={16} />
+                    </div>
+                    <div className="relative">
+                        <select className="appearance-none px-3 pr-8 py-2 text-sm border border-gray-400 rounded-md outline-none text-gray-700 bg-white cursor-pointer">
+                            <option value="">Sort by</option>
+                            <option value="date">Order Date</option>
+                            <option value="status">Order Status</option>
+                            <option value="payment">Payment</option>
+                        </select>
+                        <svg
+                            className="w-4 h-4 text-gray-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+
+                    <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 text-gray-600">
+                        <BsSortUp size={16} />
+                    </button>
+                </div>
+            </div>
+
+
+            <div className="overflow-x-auto bg-white">
                 <table className="w-full text-sm text-left text-gray-700 bg-white">
-                    <thead className="bg-gray-50 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
+                    <thead className="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>
                             <th className="px-4 py-3 align-middle">
                                 <input type="checkbox" className="w-4 h-4 rounded border-gray-400 accent-green-500" />

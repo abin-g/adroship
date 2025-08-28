@@ -63,7 +63,7 @@ const AddUser = () => {
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="bg-white p-6 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="bg-white p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
             >
                 <TextField
                     label="First Name"

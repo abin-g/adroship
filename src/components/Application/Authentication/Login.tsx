@@ -27,7 +27,7 @@ export default function LoginPage() {
             </div>
 
             <button
-                className="w-full bg-green-500 text-white font-medium py-2 rounded mb-4 disabled:bg-green-200 transition-colors duration-200 hover:bg-green-600"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium py-2 rounded mb-4 disabled:bg-green-200 transition-colors duration-200 hover:bg-green-600"
             >
                 Continue
             </button>
@@ -55,11 +55,11 @@ export default function LoginPage() {
             </p>
 
             <div className="flex gap-4 mt-5">
-                <button className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5">
+                <button className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-2.5 rounded">
                     <FiPackage size={18} />
                     Track Orders
                 </button>
-                <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-800 font-semibold py-2.5 rounded-lg shadow-sm hover:shadow-md hover:border-gray-400 transition-transform hover:-translate-y-0.5">
+                <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-800 font-semibold py-2.5 rounded">
                     <FiTruck size={18} />
                     Calc. Shipping
                 </button>

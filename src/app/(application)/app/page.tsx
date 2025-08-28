@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FiCalendar } from "react-icons/fi";
 
+import RangePicker from "@/components/Forms/RangePicker";
 import Analytics from '@/components/Application/Dashboard/Admin/Analytics';
 import Transactions from '@/components/Application/Dashboard/Admin/Transaction';
 import RecentOrders from '@/components/Application/Dashboard/Admin/RecentOrders';
@@ -27,10 +28,8 @@ const AdroShipDashboardPage = () => {
                     </button>
                 </div>
 
-                <div className="flex items-center border border-gray-300 rounded-md px-3 py-1.5 bg-white shadow-sm text-sm text-gray-700">
-                    <FiCalendar className="mr-2 text-gray-500" size={16} />
-                    <span>17-07-2025 to 17-08-2025</span>
-                </div>
+                <RangePicker />
+
             </div>
 
             {activeTab === "analytics" && (

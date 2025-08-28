@@ -35,7 +35,7 @@ const InvoicePage = () => {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-            {/* Header */}
+
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
@@ -55,10 +55,9 @@ const InvoicePage = () => {
                 </button>
             </div>
 
-            {/* Form */}
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="bg-white p-6 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="bg-white p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
             >
                 <TextField
                     label="Invoice Number"
@@ -114,7 +113,7 @@ const InvoicePage = () => {
                                 { value: "accounts", label: "Accounts" },
                             ]}
                             {...field}
-                            onChange={(val: { value: string }) => field.onChange(val?.value)}
+                            onChange={(val: any) => field.onChange(val.value)}
                         />
                     )}
                 />
@@ -153,7 +152,7 @@ const InvoicePage = () => {
                                 { value: "overdue", label: "Overdue" },
                             ]}
                             {...field}
-                            onChange={(newValue: { value: string }) => field.onChange(newValue.value)}
+                            onChange={(val: any) => field.onChange(val.value)}
                         />
                     )}
                 />

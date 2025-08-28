@@ -70,21 +70,13 @@ const navItems: NavItem[] = [
             { name: "Other Tools", path: "/app/tools/other" }
         ]
     },
-   
+
     {
         icon: <LuWarehouse size={20} />,
         name: "Warehouse",
         subItems: [
             { name: "Inventory", path: "/app/warehouse/inventory" },
             { name: "Stock Management", path: "/app/warehouse/stock" }
-        ]
-    },
-    {
-        icon: <RiCustomerService2Line size={20} />,
-        name: "Integrations",
-        subItems: [
-            { name: "API Keys", path: "/app/integrations/api" },
-            { name: "Third-party Apps", path: "/app/integrations/apps" }
         ]
     },
     {

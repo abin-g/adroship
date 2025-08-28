@@ -74,7 +74,7 @@ export default function NDR() {
                 </div>
             </div>
 
-            <div className="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
+            <div className="overflow-x-auto bg-white">
                 <table className="w-full text-sm text-left text-gray-700">
                     <thead className="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>

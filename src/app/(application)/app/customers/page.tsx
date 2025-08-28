@@ -43,7 +43,7 @@ const users = [
 
 export default function Customers() {
     return (
-        <div className="p-6 min-h-screen">
+        <div className="p-6 bg-gray-50 min-h-screen">
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
@@ -100,9 +100,9 @@ export default function Customers() {
                     </div>
                 </div>
 
-                {/* Table */}
+              
                 <table className="w-full text-sm text-left text-gray-700 bg-white ">
-                    <thead className="bg-gray-50 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
+                    <thead className="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>
                             <th className="px-4 py-3 whitespace-nowrap">
                                 <input type="checkbox" className="w-4 h-4 rounded border-gray-400 accent-green-500" />

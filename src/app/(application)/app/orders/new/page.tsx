@@ -57,10 +57,10 @@ const Stepper = ({ currentStep }: { currentStep: number }) => (
                 >
                     <span
                         className={`flex items-center justify-center w-8 h-8 rounded-full border-2 shrink-0 ${isActive
-                                ? "border-green-600 bg-green-50"
-                                : isCompleted
-                                    ? "border-green-600 bg-green-600 text-white"
-                                    : "border-gray-400"
+                            ? "border-green-600 bg-green-50"
+                            : isCompleted
+                                ? "border-green-600 bg-green-600 text-white"
+                                : "border-gray-400"
                             }`}
                     >
                         {step.number}
@@ -105,7 +105,7 @@ export default function CreateOrder() {
                 <div className="w-40 h-1 mt-3 rounded-full bg-gradient-to-r from-green-500 to-gray-700" />
             </div>
 
-            <div className="mx-auto bg-white p-6 rounded-xl shadow-md">
+            <div className="mx-auto bg-white p-6">
                 <Stepper currentStep={step} />
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

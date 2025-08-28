@@ -4,6 +4,6 @@ import CreateProfile from '@/components/Application/Authentication/CreateProfile
 
 export default function AuthenticationPage() {
     return (
-        <CreateProfile />
+        <LoginPage />
     );
 }

@@ -38,7 +38,7 @@ const ndrList = [
 export default function ManageNDR() {
     return (
         <div className="p-6 min-h-screen bg-gray-50">
-         
+
             <div className="mb-8">
                 <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
                     <span className="p-2 rounded-full bg-green-500/10 text-green-600">
@@ -52,7 +52,6 @@ export default function ManageNDR() {
                 <div className="w-28 h-1 mt-3 rounded-full bg-gradient-to-r from-green-500 to-gray-700"></div>
             </div>
 
-            {/* Controls */}
             <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div className="flex items-center gap-3">
                     <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-green-500 text-white hover:bg-green-600 shadow-sm transition">
@@ -75,8 +74,7 @@ export default function ManageNDR() {
                 </div>
             </div>
 
-            {/* Table */}
-            <div className="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
+            <div className="overflow-x-auto bg-white">
                 <table className="w-full text-sm text-left text-gray-700">
                     <thead className="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>

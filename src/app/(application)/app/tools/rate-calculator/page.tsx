@@ -51,7 +51,7 @@ const RateCalculator = () => {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-            {/* Header */}
+
             <div className="mb-6 flex items-start justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3 text-gray-900">
@@ -67,10 +67,9 @@ const RateCalculator = () => {
                 </div>
             </div>
 
-            {/* Form */}
             <form
                 onSubmit={handleSubmit(calculateRate)}
-                className="bg-white p-6 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="bg-white p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
             >
                 <TextField
                     label="Origin"
@@ -94,7 +93,6 @@ const RateCalculator = () => {
                     {...register("weight", { required: "Weight is required", valueAsNumber: true })}
                 />
 
-                {/* Dimensions */}
                 <TextField
                     label="Length (cm)"
                     type="number"
@@ -133,7 +131,7 @@ const RateCalculator = () => {
                                 { value: "express", label: "Express" },
                             ]}
                             {...field}
-                            onChange={(val: { value: string }) => field.onChange(val.value)}
+                            onChange={(val: any) => field.onChange(val.value)}
                         />
                     )}
                 />
@@ -148,7 +146,6 @@ const RateCalculator = () => {
                 </div>
             </form>
 
-            {/* Result */}
             {cost !== null && (
                 <div className="mt-6 bg-white p-6 rounded-xl shadow-md">
                     <h2 className="text-xl font-semibold text-gray-800 mb-3">
