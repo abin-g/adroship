@@ -133,7 +133,7 @@ const AppHeader: React.FC = () => {
                             </div>
                             <div className="hidden lg:flex flex-col items-start">
                                 <span className="text-sm font-medium text-gray-900">Abin T</span>
-                                <span className="text-xs text-gray-500">Trainer</span>
+                                <span className="text-xs text-gray-500">Super Admin</span>
                             </div>
                             <FaAngleDown
                                 className={`transition-transform ${isUserMenuOpen ? "rotate-180" : ""}`}

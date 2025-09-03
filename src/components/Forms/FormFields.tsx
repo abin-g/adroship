@@ -57,6 +57,28 @@ export const SelectField: React.FC<SelectFieldProps> = ({
                 {...props}
                 classNamePrefix="react-select"
                 isClearable
+                styles={{
+                    control: (base, state) => ({
+                        ...base,
+                        borderColor: error
+                            ? "#EF4444"
+                            : state.isFocused
+                                ? "#22C55E"
+                                : "#D1D5DB",
+                        boxShadow: state.isFocused
+                            ? error
+                                ? "0 0 0 1px #EF4444"
+                                : "0 0 0 1px #22C55E"
+                            : "none",
+                        "&:hover": {
+                            borderColor: error
+                                ? "#EF4444"
+                                : "#22C55E",
+                        },
+                        borderRadius: "0.5rem",
+                        minHeight: "2.5rem",
+                    }),
+                }}
             />
             {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
         </div>

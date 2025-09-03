@@ -5,14 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "@/context/SidebarContext";
 
-import { MdOutlineDashboard, MdOutlinePayment } from "react-icons/md";
-import { FaClipboardList, FaChartBar } from "react-icons/fa";
-import { RiCustomerService2Line, RiSettings5Line } from "react-icons/ri";
-import { TbTruckDelivery } from "react-icons/tb";
+import { MdOutlineDashboard, MdSettings, MdBuild } from "react-icons/md";
 import { FaChevronDown, FaAngleUp } from "react-icons/fa6";
 import { Tooltip } from "react-tooltip";
-import { LuWarehouse, LuUsers } from "react-icons/lu";
-import { SlCalculator } from "react-icons/sl";
+import { LuUsers } from "react-icons/lu";
 
 
 type NavItem = {
@@ -27,76 +23,34 @@ const navItems: NavItem[] = [
     {
         icon: <MdOutlineDashboard size={20} />,
         name: "Dashboard",
-        path: "/app"
+        path: "/app",
     },
     {
         icon: <LuUsers size={20} />,
-        name: "Users",
+        name: "Customers",
         subItems: [
-            { name: "All Users", path: "/app/users" },
-            { name: "Add New", path: "/app/users/add" },
-            { name: "Customers", path: "/app/customers" },
-        ]
+            { name: "All Customers", path: "/app/customers" },
+            { name: "Add Customers", path: "/app/customers/add" },
+        ],
     },
     {
-        icon: <FaClipboardList size={20} />,
-        name: "Orders",
+        icon: <MdSettings size={20} />,
+        name: "Settings",
         subItems: [
-            { name: "All Orders", path: "/app/orders" },
-            { name: "Create Order", path: "/app/orders/new" }
-        ]
+            { name: "Pincode Mapping", path: "/app/settings/pincode-mapping" },
+            { name: "Zone Mapping", path: "/app/settings/zone-mapping" },
+            { name: "Courier Configuration", path: "/app/settings/courier-config" },
+        ],
     },
     {
-        icon: <TbTruckDelivery size={20} />,
-        name: "NDR",
-        subItems: [
-            { name: "NDR List", path: "/app/ndr" },
-            { name: "Manage NDR", path: "/app/ndr/manage" }
-        ]
-    },
-    {
-        icon: <MdOutlinePayment size={20} />,
-        name: "Billing",
-        subItems: [
-            { name: "All Transactions", path: "/app/billing" },
-            { name: "Invoices", path: "/app/billing/invoices" }
-        ]
-    },
-    {
-        icon: <SlCalculator size={20} />,
+        icon: <MdBuild size={20} />,
         name: "Tools",
         subItems: [
             { name: "Rate Calculator", path: "/app/tools/rate-calculator" },
-            { name: "Other Tools", path: "/app/tools/other" }
-        ]
+        ],
     },
-
-    {
-        icon: <LuWarehouse size={20} />,
-        name: "Warehouse",
-        subItems: [
-            { name: "Inventory", path: "/app/warehouse/inventory" },
-            { name: "Stock Management", path: "/app/warehouse/stock" }
-        ]
-    },
-    {
-        icon: <FaChartBar size={20} />,
-        name: "Reports",
-        subItems: [
-            { name: "Sales Reports", path: "/app/reports/sales" },
-            { name: "Customer Insights", path: "/app/reports/customers" },
-            { name: "Logistics Performance", path: "/app/reports/logistics" }
-        ]
-    },
-    {
-        icon: <RiSettings5Line size={20} />,
-        name: "Settings",
-        subItems: [
-            { name: "User Settings", path: "/app/settings/users" },
-            { name: "App Settings", path: "/app/settings/app" }
-        ]
-    }
 ];
+
 
 const AppSidebar: React.FC = () => {
     const { isExpanded, isMobileOpen } = useSidebar();
