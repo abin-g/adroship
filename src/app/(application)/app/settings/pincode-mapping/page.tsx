@@ -5,12 +5,12 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { BsSortUp } from "react-icons/bs";
 import { useState } from "react";
-import { SelectField } from "@/components/Forms/FormFields";
-
+import { SelectField, TextField } from "@/components/Forms/FormFields";
 
 const initialPincodes = [
     {
         id: 1,
+        pincode: "641001",
         city: "Coimbatore",
         state: "Tamil Nadu",
         cod: true,
@@ -19,6 +19,7 @@ const initialPincodes = [
     },
     {
         id: 2,
+        pincode: "560001",
         city: "Bangalore",
         state: "Karnataka",
         cod: false,
@@ -27,6 +28,7 @@ const initialPincodes = [
     },
     {
         id: 3,
+        pincode: "400001",
         city: "Mumbai",
         state: "Maharashtra",
         cod: true,
@@ -41,7 +43,15 @@ export default function PincodeMapping() {
     const handleChange = (id: number, field: string, value: string) => {
         setPincodes((prev) =>
             prev.map((row) =>
-                row.id === id ? { ...row, [field]: field === "cod" || field === "prepaid" || field === "pickup" ? value === "Yes" : value } : row
+                row.id === id
+                    ? {
+                        ...row,
+                        [field]:
+                            field === "cod" || field === "prepaid" || field === "pickup"
+                                ? value === "Yes"
+                                : value,
+                    }
+                    : row
             )
         );
     };
@@ -54,12 +64,14 @@ export default function PincodeMapping() {
                         Pincode Mapping
                     </h1>
                     <p className="mt-2 text-gray-600 text-sm">
-                        Manage and configure COD, Prepaid, and Pickup availability by city.
+                        Manage and configure Pincode, COD, Prepaid, and Pickup availability
+                        by city.
                     </p>
                     <div className="w-20 h-1 mt-3 rounded-full bg-gradient-to-r from-green-500 to-gray-700"></div>
                 </div>
             </div>
 
+            {/* Toolbar */}
             <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-3">
                     <button className="cursor-pointer flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-green-500 text-white hover:bg-green-600 shadow-sm transition">
@@ -86,6 +98,7 @@ export default function PincodeMapping() {
                     <div className="relative">
                         <select className="appearance-none px-3 pr-8 py-2 text-sm border border-gray-400 rounded-md outline-none text-gray-700 bg-white cursor-pointer">
                             <option value="">Sort by</option>
+                            <option value="pincode">Pincode</option>
                             <option value="city">City</option>
                             <option value="state">State</option>
                             <option value="cod">COD</option>
@@ -113,10 +126,12 @@ export default function PincodeMapping() {
                 </div>
             </div>
 
+            {/* Table */}
             <div className="overflow-x-auto bg-white">
                 <table className="w-full text-sm text-left text-gray-700 bg-white">
                     <thead className="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide border-b border-gray-200">
                         <tr>
+                            <th className="px-6 py-3">Pincode</th>
                             <th className="px-6 py-3">City</th>
                             <th className="px-6 py-3">State</th>
                             <th className="px-6 py-3">COD</th>
@@ -132,6 +147,19 @@ export default function PincodeMapping() {
                                 className={`transition-colors duration-200 ${index % 2 === 0 ? "bg-white" : "bg-gray-50"
                                     } hover:bg-green-50`}
                             >
+                                {/* Pincode Field */}
+                                <td className="px-6 py-4">
+                                    <TextField
+                                        label=""
+                                        value={row.pincode}
+                                        onChange={(e) =>
+                                            handleChange(row.id, "pincode", e.target.value)
+                                        }
+                                        placeholder="Enter Pincode"
+                                    />
+                                </td>
+
+                                {/* City Field */}
                                 <td className="px-6 py-4">
                                     <SelectField
                                         label=""
@@ -149,6 +177,7 @@ export default function PincodeMapping() {
                                     />
                                 </td>
 
+                                {/* State Field */}
                                 <td className="px-6 py-4">
                                     <SelectField
                                         label=""
@@ -166,10 +195,14 @@ export default function PincodeMapping() {
                                     />
                                 </td>
 
+                                {/* COD */}
                                 <td className="px-6 py-4">
                                     <SelectField
                                         label=""
-                                        value={{ label: row.cod ? "Yes" : "No", value: row.cod ? "Yes" : "No" }}
+                                        value={{
+                                            label: row.cod ? "Yes" : "No",
+                                            value: row.cod ? "Yes" : "No",
+                                        }}
                                         options={[
                                             { label: "Yes", value: "Yes" },
                                             { label: "No", value: "No" },
@@ -180,6 +213,7 @@ export default function PincodeMapping() {
                                     />
                                 </td>
 
+                                {/* Prepaid */}
                                 <td className="px-6 py-4">
                                     <SelectField
                                         label=""
@@ -197,6 +231,7 @@ export default function PincodeMapping() {
                                     />
                                 </td>
 
+                                {/* Pickup */}
                                 <td className="px-6 py-4">
                                     <SelectField
                                         label=""
@@ -218,6 +253,7 @@ export default function PincodeMapping() {
                     </tbody>
                 </table>
 
+                {/* Pagination */}
                 <div className="flex items-center justify-between px-4 py-3 bg-white">
                     <p className="text-sm text-gray-600">Showing 1–10 of 24 pincodes</p>
                     <div className="flex items-center space-x-2">
